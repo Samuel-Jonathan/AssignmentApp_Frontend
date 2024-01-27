@@ -12,7 +12,7 @@ export class AssignmentsService {
 
   constructor(private http: HttpClient, private authService: AuthService) { }
 
-  url = "http://localhost:8010/api/assignments";
+  url = "https://assignmentapp-3x7i.onrender.com/api/assignments";
   isLoading: boolean = false;
 
   getToken() {
