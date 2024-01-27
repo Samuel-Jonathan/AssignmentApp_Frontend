@@ -11,7 +11,7 @@ export class SubjectsService {
 
   constructor(private http: HttpClient, private authService: AuthService) { }
 
-  url = "http://localhost:8010/api/subjects";
+  url = "https://assignmentapp-3x7i.onrender.com/api/subjects";
 
   getSubjects(): Observable<Subject[]> {
     return this.http.get<Subject[]>(this.url);

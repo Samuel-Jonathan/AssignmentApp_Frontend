@@ -9,7 +9,7 @@ import { User } from '../login/user';
 })
 export class AuthService {
 
-  private apiUrl = 'http://localhost:8010/api';
+  private apiUrl = 'https://assignmentapp-3x7i.onrender.com/api/';
 
   constructor(private http: HttpClient, public jwtHelper: JwtHelperService) {
   }
