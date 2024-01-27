@@ -1,0 +1,26 @@
+<div class="container">
+    <mat-card *ngIf="assignementTransmis">
+        <mat-card-content>
+            <mat-card-title>{{assignementTransmis.nom}}</mat-card-title>
+            <mat-card-subtitle style="display: flex; justify-content: center;">
+                <img src="../../assets/{{ assignementTransmis.imgSubject }}" alt="{{ assignementTransmis.nom }}"
+                    width="64" height="64">
+            </mat-card-subtitle>
+            <mat-card-subtitle>Date de rendu : {{assignementTransmis.dateDeRendu | date:
+                'dd/MM/yyyy'}}</mat-card-subtitle>
+            <mat-card-subtitle>Nom de la matière : {{assignementTransmis.subjectName}}</mat-card-subtitle>
+            <mat-card-subtitle><img src="../../assets/{{assignementTransmis.imgTeacher }}"
+                    alt="{{ assignementTransmis.nom }}" width="140" height="150"></mat-card-subtitle>
+            <p>{{assignementTransmis.subjectTeacher}}</p>
+            <mat-card-subtitle>Note : {{assignementTransmis.note}}</mat-card-subtitle>
+            <mat-card-subtitle>Commentaire : {{assignementTransmis.comment}}</mat-card-subtitle>
+            <mat-card-actions id="bottom">
+                <mat-checkbox *ngIf="!assignementTransmis.rendu" (click)="onAssignmentRendu()">Devoir
+                    rendu</mat-checkbox>
+                <button mat-stroked-button color="primary" (click)="onClickEdit()">Modifier</button>
+                <button mat-flat-button color="accent" (click)="openConfirmationDialog()"
+                    [disabled]="!isAdmin()">Supprimer le devoir</button>
+            </mat-card-actions>
+        </mat-card-content>
+    </mat-card>
+</div>

@@ -1,0 +1,56 @@
+.container {
+    background: url("../../../assets/lucioles.jpg") no-repeat center center fixed;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+mat-card {
+    width: 400px;
+    border-radius: 10px;
+    padding: 10px 5px;
+    color: black;
+    font-family: 'Poppins', sans-serif;
+    letter-spacing: 0.5px;
+}
+
+mat-card-title {
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 42px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+mat-card-subtitle {
+    font-size: 16px;
+    font-weight: 500;
+    margin-top: 20px;
+}
+
+mat-card-subtitle img {
+    margin-left: 10px;
+    vertical-align: middle;
+}
+
+#bottom {
+    margin-top: 30px;
+}
+
+mat-checkbox {
+    margin-right: 20px;
+}
+
+button {
+    margin-left: 10px;
+}
+
+button:hover {
+    background-color: rgb(123, 123, 123);
+}
+
+
+
+

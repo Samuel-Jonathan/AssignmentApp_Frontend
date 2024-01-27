@@ -1,0 +1,9 @@
+h1{
+  text-align: center;
+  color: black;
+}
+
+button{
+  display: block;
+  margin: auto;
+}

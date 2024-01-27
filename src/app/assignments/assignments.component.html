@@ -1,0 +1,61 @@
+<body>
+  <main class="container">
+    <div class="search-container">
+      <mat-form-field class="search-field">
+        <input matInput placeholder="Rechercher par le nom du devoir" [(ngModel)]="searchQuery"
+          (keyup)="searchAssignments()" name="search">
+      </mat-form-field>
+    </div>
+    <div class="filter-container">
+      <mat-checkbox class="filter-checkbox" [(ngModel)]="renduFilter" (change)="applyRenduFilter()">
+        <label class="filter-label">Afficher les rendus uniquement</label>
+      </mat-checkbox>
+    </div>
+    <table mat-table [dataSource]="getDataSource()" matSort matSortActive="nom" matSortDirection="asc">
+      <ng-container matColumnDef="nom">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Nom du Devoir</th>
+        <td mat-cell *matCellDef="let assignment">{{ assignment.nom }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="subjectName">
+        <th mat-header-cell *matHeaderCellDef>Matière</th>
+        <td mat-cell *matCellDef="let assignment">{{ assignment.subjectName }} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="subjectImg">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let assignment"><img
+            src="../assets/{{ assignment.imgSubject }}" alt="{{ assignment.nom }}" width="64" height="64"></td>
+      </ng-container>
+
+      <ng-container matColumnDef="studentName">
+        <th mat-header-cell *matHeaderCellDef>Nom de l'étudiant</th>
+        <td mat-cell *matCellDef="let assignment">{{ assignment.studentName }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="dateDeRendu">
+        <th mat-header-cell *matHeaderCellDef>Date de Rendu</th>
+        <td mat-cell *matCellDef="let assignment">{{ assignment.dateDeRendu | date }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="rendu">
+        <th mat-header-cell *matHeaderCellDef>Rendu</th>
+        <td mat-cell *matCellDef="let assignment">
+          <p appRendu *ngIf="assignment.rendu; else nonsoumis">
+            Rendu
+          </p>
+          <ng-template #nonsoumis>
+            Non rendu
+          </ng-template>
+        </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="['nom','subjectName','subjectImg','studentName','dateDeRendu','rendu']"></tr>
+      <tr mat-row *matRowDef="let assignment; columns: ['nom','subjectName','subjectImg','studentName','dateDeRendu','rendu']"
+        [routerLink]="['/assignment', assignment.id]">
+      </tr>
+    </table>
+
+    <mat-paginator [length]="totalDocs" [pageSize]="limit" [pageSizeOptions]="[10, 25, 50]" showFirstLastButtons
+      (page)="onLimitResult($event)" (page)="onPageChange($event)"></mat-paginator>
+  </main>
+</body>

@@ -1,0 +1,44 @@
+<body>
+  <form ngForm #assignmentForm class="form">
+    <mat-horizontal-stepper [linear]="true" #stepper>
+      <mat-step>
+        <ng-template matStepLabel>Étape 1</ng-template>
+        <mat-form-field>
+          <input matInput #nomAssignment placeholder="Nom du devoir" [(ngModel)]="nomDevoir" name="nom">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput [matDatepicker]="picker" placeholder="Date de rendu" [(ngModel)]="dateRendu" name="date">
+        </mat-form-field>
+        <mat-datepicker-toggle matSuffix [for]="picker" style="color: #217B8A;"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        <button style="color: white" mat-stroked-button (click)="nextStep(stepper)">Suivant</button>
+      </mat-step>
+      <mat-step>
+        <ng-template matStepLabel>Étape 2</ng-template>
+        <mat-form-field>
+          <mat-label for="subject">Matière</mat-label>
+          <mat-select [(ngModel)]="selectedSubjectId" name="subject" id="subject" placeholder="Matière">
+            <mat-option *ngFor="let subject of subjects" [value]="subject.id">{{ subject.name }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label for="student">Étudiant</mat-label>
+          <mat-select [(ngModel)]="selectedStudentId" name="student" id="student" placeholder="Étudiant">
+            <mat-option *ngFor="let student of students" [value]="student.id">{{ student.first_name }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label for="note">Note</mat-label>
+          <mat-select [(ngModel)]="selectedNote" name="note" id="note">
+            <mat-option *ngFor="let i of notes" [value]="i">{{ i }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <textarea matInput placeholder="Commentaire" [(ngModel)]="comment" name="comment"></textarea>
+        </mat-form-field>
+        <button style="color: white" (click)="openConfirmationDialog()">Ajouter un devoir</button>
+        <button style="color: white" mat-button (click)="previousStep(stepper)">Retour</button>
+      </mat-step>
+    </mat-horizontal-stepper>
+  </form>
+</body>

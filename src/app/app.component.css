@@ -1,0 +1,45 @@
+mat-toolbar {
+    background-color: #3B3B39;
+}
+
+mat-icon {
+    color: aliceblue;
+}
+
+.login {
+    flex: 1;
+}
+
+mat-sidenav-container {
+    height: calc(205vh - 115vh);
+}
+
+mat-sidenav {
+    background: rgb(243, 243, 241);
+}
+
+
+button:hover {
+    background-color: #717171;
+}
+
+.disabled-background {
+    background-color: rgb(186, 186, 186);
+}
+
+::ng-deep .loading-spinner mat-spinner circle {
+    stroke: white;
+}
+
+.center-toolbar {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center; 
+  }
+
+.centered-text {
+    color: white;
+    font-size: 23px;
+    text-align: center;
+    flex-grow: 1;
+  }

@@ -1,0 +1,46 @@
+<mat-horizontal-stepper [linear]="true" #stepper>
+  <mat-step>
+    <ng-template matStepLabel>Étape 1</ng-template>
+    <form #formStep1="ngForm">
+      <mat-form-field>
+        <input matInput placeholder="Édition du nom" [(ngModel)]="nomAssignment" name="assignment-name">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput [matDatepicker]="picker" placeholder="Édition de la date" [(ngModel)]="dateDeRendu" name="date">
+      </mat-form-field>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+      <button mat-raised-button color="primary" (click)="nextStep(stepper, formStep1)">Suivant</button>
+    </form>
+  </mat-step>
+
+  <mat-step>
+    <ng-template matStepLabel>Étape 2</ng-template>
+    <form #formStep2="ngForm">
+      <mat-form-field>              
+        <mat-label for="subject">Matière</mat-label>
+        <mat-select [(ngModel)]="selectedSubject" name="subject" id="subject">
+          <mat-option *ngFor="let subject of subjects" [value]="subject.id">{{ subject.name }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label for="student">Étudiant</mat-label>
+        <mat-select [(ngModel)]="selectedStudent" name="student" id="student">
+          <mat-option *ngFor="let student of students" [value]="student.id">{{ student.first_name + " "
+            +student.last_name }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label for="note">Note</mat-label>
+        <mat-select [(ngModel)]="selectedNote" name="note" id="note">
+          <mat-option *ngFor="let i of notes" [value]="i">{{ i }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <textarea matInput placeholder="Commentaire" [(ngModel)]="comment" name="comment"></textarea>
+      </mat-form-field>
+      <button mat-raised-button color="primary" (click)="openConfirmationDialog(); formStep2.reset();">Sauvegarder</button>
+      <button mat-button color="warn" (click)="previousStep(stepper)">Retour</button>
+    </form>
+  </mat-step>
+</mat-horizontal-stepper>

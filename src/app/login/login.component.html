@@ -1,0 +1,15 @@
+<body>
+    <div class="container">
+        <form (ngSubmit)="login()">
+            <label for="username">Nom d'utilisateur :</label>
+            <input type="text" id="username" name="username" [(ngModel)]="username" required>
+
+            <label for="password">Mot de passe :</label>
+            <input type="password" id="password" name="password" [(ngModel)]="password" required>
+            <button type="submit">Se connecter</button>
+            <nav>
+                <a routerLink="/account">Crée un compte</a>
+            </nav>
+        </form>
+    </div>
+</body>
