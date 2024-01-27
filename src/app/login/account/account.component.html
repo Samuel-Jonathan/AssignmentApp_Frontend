@@ -2,19 +2,20 @@
     <div class="container">
         <form (ngSubmit)="register()">
             <div>
-                <label for="nom">Nom d'utilisateur:</label>
+                <label for="nom">Nom d'utilisateur</label>
                 <input type="text" id="username" name="username" [(ngModel)]="username" required>
             </div>
             <div>
-                <label for="mdp">Mot de passe :</label>
+                <label for="mdp">Mot de passe</label>
                 <input type="password" id="mdp" name="mdp" [(ngModel)]="password" required minlength="8">
             </div>
             <div>
-                <label for="mdp-confirm">Confirmer le mot de passe :</label>
+                <label for="mdp-confirm">Confirmer le mot de passe</label>
                 <input type="password" id="mdp-confirm" name="mdp-confirm" [(ngModel)]="confirmPassword" required
                     minlength="8">
             </div>
-            <label for="role">Rôle :</label>
+            <label for="role">Rôle</label>
+            <div id="containerCheckbox">
             <div>
                 <input type="radio" id="admin" name="role" value="admin" [(ngModel)]="role" required
                     [checked]="role === 'admin'">
@@ -25,6 +26,7 @@
                 <input type="radio" id="user" name="role" value="user" [(ngModel)]="role" required>
                 <label for="user">Utilisateur</label>
             </div>
+        </div>
             <div>
                 <button type="submit">S'inscrire</button>
             </div>
