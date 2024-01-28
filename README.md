@@ -7,7 +7,7 @@ AssignmentApp est une application Angular conçue pour la gestion des devoirs,  
 
 https://assignmentapp-frontend.onrender.com
 
-(Il faut attendre quelques secondes pour que les assignments s'affichent)
+(Il faut attendre au moins 30 secondes pour que les assignments s'affichent)
 
 ***Identifiant***
 
