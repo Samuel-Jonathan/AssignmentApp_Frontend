@@ -22,7 +22,9 @@ export class AppComponent {
 
   peuplerBD() {
     if(!this.authService.isAuthenticated()){
-      this.toastr.error('Vous devez être authentifié !', 'Erreur');
+      this.toastr.error('Vous devez être authentifié !', 'Erreur', {
+        positionClass: 'toast-bottom-right'
+      });
       return;
     }
     this.isButtonDisable = true;
