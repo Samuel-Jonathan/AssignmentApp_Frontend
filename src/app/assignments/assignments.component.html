@@ -2,7 +2,7 @@
   <main class="container">
     <div class="search-container">
       <mat-form-field class="search-field">
-        <input matInput placeholder="Rechercher par le nom du devoir" [(ngModel)]="searchQuery"
+        <input matInput placeholder="Rechercher un devoir" [(ngModel)]="searchQuery"
           (keyup)="searchAssignments()" name="search">
       </mat-form-field>
     </div>
@@ -45,11 +45,13 @@
             Rendu
           </p>
           <ng-template #nonsoumis>
-            Non rendu
+            <p appNonRendu>
+              Non rendu
+            </p>
           </ng-template>
         </td>
       </ng-container>
-      <tr mat-header-row *matHeaderRowDef="['nom','subjectName','subjectImg','studentName','dateDeRendu','rendu']"></tr>
+      <tr class="header" mat-header-row *matHeaderRowDef="['nom','subjectName','subjectImg','studentName','dateDeRendu','rendu']"></tr>
       <tr mat-row *matRowDef="let assignment; columns: ['nom','subjectName','subjectImg','studentName','dateDeRendu','rendu']"
         [routerLink]="['/assignment', assignment.id]">
       </tr>
