@@ -32,7 +32,7 @@ export class AccountComponent {
     }
 
     if (this.password !== this.confirmPassword) {
-      this.toastr.error("Le mot de passe ne correspond pas.", 'Erreur', {
+      this.toastr.error("Les mot de passes doivent être identique !.", 'Erreur', {
         positionClass: 'toast-bottom-right' 
       });
       return;

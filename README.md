@@ -9,6 +9,8 @@ https://assignmentapp-frontend.onrender.com
 
 (Il faut attendre quelques secondes pour que les assignments s'affichent)
 
+***Identifiant***
+
 username : user
 password : userpass
 
@@ -42,13 +44,13 @@ Lien de la video
         - Commentaire relatif à l'assignment
         - Options pour modifier et supprimer le devoir
 
-Lorsqu'on supprime ou modifie un devoir. L'application demande une confirmation à l'utilisateur.
+Lorsqu'on supprime ou modifie un devoir. L'application demande une confirmation à l'utilisateur. Il faut être authentifié en tant que user ou admin pour éditer un devoir. De plus, il faut être admin pour supprimer un devoir.
 
 - On a également incorporé la pagination en utilisant Paginator d'Angular Material, on peut afficher sur le tableau 10, 25, ou 50 assignments parmis 1000 et paginer à chaque fois.
 
 **Authentification**
 
-Un mécanisme de connexion avec identifiant et mot de passe a été mis en place. Pour accéder à ce système, il suffit de cliquer sur l'icône de connexion située à droite de la barre d'outils, ce qui ouvrira le formulaire d'authentification. L'authentification a été réalisé avec Json Web Token. Lorsque l'utilisateur se connecte, il possède un token qui est nécessaires pour accéder à certaines routes. Lorsqu'on rafraichit la page, l'utilisateur reste connecté.
+Un mécanisme de connexion avec identifiant et mot de passe a été mis en place. Pour accéder à ce système, il suffit de cliquer sur l'icône de connexion située à droite de la barre d'outils, ce qui ouvrira le formulaire d'authentification. L'authentification a été réalisé avec Json Web Token. Lorsque l'utilisateur se connecte, il possède un token qui est nécessaires pour accéder à certaines routes. Lorsqu'on rafraichit la page, l'utilisateur reste connecté. Un token est nécessaires pour ajouter, modifier et supprimer un devoir.
 
 **Pour se connecter**
 
@@ -60,7 +62,7 @@ Si l'utilisateur ne possède pas de compte, il peut cliquer sur le lien "Créer 
 
 **Peupler la base de données**
 
-Ajoute 1000 devoirs
+Ajoute 1000 devoirs. Il faut être authentifié en tant que user ou admin.
 
 
 ### Sidenav
@@ -88,28 +90,41 @@ Un lien vers le formulaire d'ajout d'un nouvel assignment destiné aux utilisate
     
     L'application demande une confirmation à l'utilisateur avant d'ajouter.
 
+Il faut être authentifié en tant que user ou admin.
+
 
 **Suppression d'un devoir**
 
 
 **Génération de données test**
 
+On peut ajouter des devoirs en choississant le nombre de devoirs que l'on veut ajouter. Il faut être authentifié en tant que user ou admin.
+
 ### Notifications
 
 Nous avons ajouté un système de notification.
 
 **Ajout d'un devoir**
+
 - Message d'erreur si tous les champs ne sont pas remplis à part commentaire
-- Message de validation lorsqu'on ajoute un devoir
+- Message de succès lorsqu'on ajoute un devoir
 
 **Création d'un compte**
+
 - Message d'erreur si tous les champs ne sont pas remplis, si un compte avec le même nom d'utilisateur existe déjà, si le mot de passe n'est pas identique et si le mot de passe ne fait pas minimum 8 caractères
-- Message de validation lorsqu'on crée un compte
+- Message de succès lorsqu'on crée un compte
 
 **Authentification**
+
 - Message d'erreur si tous les champs ne sont pas remplis 
 - Message d'erreur si le nom d'utilisateur et le mot de passe ne correspondent pas
-- Message de validation lorsqu'on se connecte
+- Message de succès lorsqu'on se connecte
+
+**Génération de données test**
+- Message d'erreur si l'utilisateur n'est pas authentifié
+- Message d'erreur si le nombre n'est pas compris entre 1 et 1000
+- Message de succès si les devoirs ont étaient ajoutés.
+
 
 **Détail d'un assignment**
 - Message de validation lorsqu'on supprime un devoir
