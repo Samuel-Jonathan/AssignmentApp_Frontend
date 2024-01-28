@@ -67,8 +67,8 @@ export class AddAssignmentComponent implements OnInit {
   }
 
   onSubmit() {
-    if (!this.nomDevoir || this.dateRendu || this.selectedStudentId || this.selectedSubjectId
-      || this.notes) {
+    if (!this.nomDevoir || !this.dateRendu || !this.selectedStudentId || !this.selectedSubjectId
+      || !this.notes) {
       this.toastr.error("Tous les champs sont obligatoires sauf le champ pour le commentaire !", 'Erreur', {
         positionClass: 'toast-bottom-right'
       });
