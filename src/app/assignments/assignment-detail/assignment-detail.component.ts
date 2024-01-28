@@ -17,10 +17,10 @@ export class AssignmentDetailComponent implements OnInit {
 
   constructor(private assignmentsService: AssignmentsService, private route: ActivatedRoute,
     private router: Router, private authService: AuthService,
-    private dialog: MatDialog, private toastr: ToastrService ) { }
+    private dialog: MatDialog, private toastr: ToastrService) { }
 
   ngOnInit(): void {
-    this.getAssignments();    
+    this.getAssignments();
   }
 
   getAssignments() {
@@ -29,13 +29,15 @@ export class AssignmentDetailComponent implements OnInit {
       if (assignment) {
         this.assignementTransmis = assignment;
         console.log(this.assignementTransmis.nom);
-        
+
       }
     });
   }
 
   onAssignmentRendu() {
-    this.assignementTransmis?.rendu != true;
+    if (this.assignementTransmis) {
+      this.assignementTransmis.rendu = true;
+    }
 
     if (this.assignementTransmis) {
       this.assignmentsService.updateAssignment(this.assignementTransmis).subscribe(
@@ -50,7 +52,7 @@ export class AssignmentDetailComponent implements OnInit {
       this.assignmentsService.deleteAssignment(this.assignementTransmis)
         .subscribe(() => {
           this.toastr.success("Le devoir a été supprimé !", '', {
-            positionClass: 'toast-bottom-right' 
+            positionClass: 'toast-bottom-right'
           });
           this.router.navigate(["/home"]);
         })

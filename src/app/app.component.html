@@ -16,18 +16,10 @@
       <button style="color:white" mat-button [disabled]="isButtonDisable" [class.disabled-background]="isButtonDisable"
         (click)="peuplerBD()">Add Assignments in database
         <mat-icon>autorenew</mat-icon>
-      </button>
-      <div *ngIf="!getIsLoading()" class="loading-spinner">
-        <mat-spinner style="width: 40px; margin-left: 10px;"></mat-spinner>
-      </div>
-      <div *ngIf="isButtonDisable" class="loading-spinner">
-        <mat-spinner style="width: 40px; margin-left: 10px;"></mat-spinner>
-      </div>
-      <mat-toolbar class="center-toolbar">
+      </button> 
         <div *ngIf="getUsername()" class="centered-text">
           <p>Bienvenue {{getUsername()}}</p>
         </div>
-      </mat-toolbar>
       <span class="login"></span>
       <a routerLink="/home">
         <button style="color: white" mat-button> Page d'accueil

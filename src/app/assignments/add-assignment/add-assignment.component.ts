@@ -37,12 +37,12 @@ export class AddAssignmentComponent implements OnInit {
     private toastr: ToastrService,
     private dialog: MatDialog,
     private authService: AuthService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.getSubjects();
     this.getStudents();
-    
+
     this.notes = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
   }
 
@@ -67,6 +67,49 @@ export class AddAssignmentComponent implements OnInit {
   }
 
   onSubmit() {
+    if (!this.nomDevoir || this.dateRendu || this.selectedStudentId || this.selectedSubjectId
+      || this.notes) {
+      this.toastr.error("Tous les champs sont obligatoires sauf le champ pour le commentaire !", '', {
+        positionClass: 'toast-bottom-right'
+      });
+      return;
+    }
+
+    if (!this.nomDevoir) {
+      this.toastr.error("Le devoir doit avoir un nom !", '', {
+        positionClass: 'toast-bottom-right'
+      });
+      return;
+    }
+
+    if (!this.dateRendu) {
+      this.toastr.error("Le devoir doit avoir une date de rendu !", '', {
+        positionClass: 'toast-bottom-right'
+      });
+      return;
+    }
+
+    if (!this.selectedStudentId) {
+      this.toastr.error("Le devoir doit avoir un étudiant  !", '', {
+        positionClass: 'toast-bottom-right'
+      });
+      return;
+    }
+
+    if (!this.selectedSubjectId) {
+      this.toastr.error("Le devoir doit avoir une matière !", '', {
+        positionClass: 'toast-bottom-right'
+      });
+      return;
+    }
+
+    if (!this.notes) {
+      this.toastr.error("Le devoir doit avoir une note !", '', {
+        positionClass: 'toast-bottom-right'
+      });
+      return;
+    }
+
     const newAssignment = new Assignment();
 
     newAssignment.id = this.id;
@@ -74,13 +117,13 @@ export class AddAssignmentComponent implements OnInit {
     newAssignment.dateDeRendu = this.dateRendu;
     newAssignment.subjectId = this.selectedSubjectId;
     newAssignment.studentId = this.selectedStudentId;
-    newAssignment.note = this.selectedNote; 
-    newAssignment.comment = this.comment; 
+    newAssignment.note = this.selectedNote;
+    newAssignment.comment = this.comment;
 
     this.assignmentsService.addAssignment(newAssignment).subscribe((message) => {
       console.log(message);
       this.toastr.success("Le devoir a été ajouté !", '', {
-        positionClass: 'toast-bottom-right' 
+        positionClass: 'toast-bottom-right'
       });
       this.router.navigate(['/home']);
     });

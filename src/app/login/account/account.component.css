@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@500&display=swap');
+
+
 *,
 *:before,
 *:after {
@@ -55,18 +58,12 @@ label{
     margin-top: 8px;
     font-size: 14px;
     font-weight: 300;
-}
-
-.container input:hover{
-    border:2px solid aliceblue;
-    border-radius: 10px;
-    
+    color: black;
 }
 
 #containerCheckbox{
      display: flex;
      size: 30px;
-    
 }
 
 
@@ -80,8 +77,14 @@ label{
     font-size: 18px;
     font-weight: 600;
     border-radius: 5px;
+    transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
 }
 
 .container button:hover {
     background-color: rgb(64, 64, 224);
+    transform: scale(1.05); 
+}
+
+.container input:focus {
+    background-color: white;
 }

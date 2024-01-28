@@ -1,4 +1,5 @@
 mat-toolbar {
+    display: block;
     background-color: #3B3B39;
 }
 
@@ -18,28 +19,42 @@ mat-sidenav {
     background: rgb(243, 243, 241);
 }
 
+.mat-toolbar-row button {
+    transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
 
-button:hover {
+.mat-toolbar-row button:hover {
     background-color: #717171;
+    transform: scale(1.1); 
 }
 
 .disabled-background {
     background-color: rgb(186, 186, 186);
 }
 
-::ng-deep .loading-spinner mat-spinner circle {
-    stroke: white;
+mat-toolbar-row {
+    position: relative;
 }
 
-.center-toolbar {
-    display: flex;
-    justify-content: space-between; 
-    align-items: center; 
-  }
-
 .centered-text {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
     color: white;
     font-size: 23px;
-    text-align: center;
-    flex-grow: 1;
-  }
+    animation: sparkle 2s linear infinite;
+}
+
+@keyframes sparkle {
+    0% {
+        text-shadow: 0 0 5px white;
+    }
+
+    50% {
+        text-shadow: 0 0 10px rgb(120, 38, 38);
+    }
+
+    100% {
+        text-shadow: 0 0 5px white;
+    }
+}

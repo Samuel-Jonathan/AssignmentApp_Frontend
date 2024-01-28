@@ -6,14 +6,19 @@
                 <img src="../../assets/{{ assignementTransmis.imgSubject }}" alt="{{ assignementTransmis.nom }}"
                     width="64" height="64">
             </mat-card-subtitle>
-            <mat-card-subtitle>Date de rendu : {{assignementTransmis.dateDeRendu | date:
-                'dd/MM/yyyy'}}</mat-card-subtitle>
-            <mat-card-subtitle>Nom de la matière : {{assignementTransmis.subjectName}}</mat-card-subtitle>
-            <mat-card-subtitle><img src="../../assets/{{assignementTransmis.imgTeacher }}"
-                    alt="{{ assignementTransmis.nom }}" width="140" height="150"></mat-card-subtitle>
-            <p>{{assignementTransmis.subjectTeacher}}</p>
-            <mat-card-subtitle>Note : {{assignementTransmis.note}}</mat-card-subtitle>
-            <mat-card-subtitle>Commentaire : {{assignementTransmis.comment}}</mat-card-subtitle>
+            <mat-card-subtitle>Date de rendu : </mat-card-subtitle><p>{{assignementTransmis.dateDeRendu | date:
+                'dd/MM/yyyy'}}</p>
+            <mat-card-subtitle>Nom de la matière : </mat-card-subtitle>
+            <p>{{assignementTransmis.subjectName}}</p>
+            <div class="center">
+                <mat-card-subtitle><img src="../../assets/{{assignementTransmis.imgTeacher }}"
+                        alt="{{ assignementTransmis.nom }}" width="140" height="150"></mat-card-subtitle>
+                <p>{{assignementTransmis.subjectTeacher}}</p>
+            </div>
+            <mat-card-subtitle>Note : </mat-card-subtitle>
+            <p>{{assignementTransmis.note}}</p>
+            <mat-card-subtitle>Commentaire : </mat-card-subtitle>
+            <p>{{assignementTransmis.comment}}</p>
             <mat-card-actions id="bottom">
                 <mat-checkbox *ngIf="!assignementTransmis.rendu" (click)="onAssignmentRendu()">Devoir
                     rendu</mat-checkbox>
