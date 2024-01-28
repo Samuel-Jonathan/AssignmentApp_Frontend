@@ -44,7 +44,7 @@ export class AssignmentsService {
   
     return this.http.get<Assignment[]>(this.url + "/all?sortBy=id:desc").pipe(
       switchMap(assignments => {
-        const newId = assignments.length + 1; 
+        const newId = assignments.length + 5; 
         assignment.id = newId;        
         return this.http.post<Assignment>(this.url, assignment, this.getHttpOptions());
       })
