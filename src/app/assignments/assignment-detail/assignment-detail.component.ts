@@ -73,7 +73,7 @@ export class AssignmentDetailComponent implements OnInit {
   }
 
   onClickEdit() {
-    if (this.authService.isAuthenticated()) {
+    if (!this.authService.isAuthenticated()) {
       this.toastr.error("Vous devez être authentifié !", 'Erreur', {
         positionClass: 'toast-bottom-right'
       });
