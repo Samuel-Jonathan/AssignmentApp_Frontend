@@ -21,6 +21,10 @@ export class AppComponent {
   }
 
   peuplerBD() {
+    if(!this.authService.isAuthenticated()){
+      this.toastr.error('Vous devez être authentifié !', 'Erreur');
+      return;
+    }
     this.isButtonDisable = true;
     this.assignmentService.peuplerBDavecForkJoin(1000)
       .subscribe(() => {

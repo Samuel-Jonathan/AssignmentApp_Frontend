@@ -18,21 +18,31 @@ export class DataComponent {
     private toastr: ToastrService, private router: Router ) { }
 
   onGenerate() {
-    if (this.nbData < 1 || this.nbData > 1000) {
-      this.toastr.error('Le nombre doit être compris entre 1 et 1000.', 'Erreur');
-      this.isButtonDisable = false; 
+    if(!this.authService.isAuthenticated()){
+      this.toastr.error('Vous devez être authentifié !', 'Erreur', {
+        positionClass: 'toast-bottom-right'
+      });
       return;
     }
-    console.log("ok");
-    
+    if (this.nbData < 1 || this.nbData > 1000) {
+      this.toastr.error('Le nombre doit être compris entre 1 et 1000.', 'Erreur', {
+        positionClass: 'toast-bottom-right'
+      });
+      return;
+    }
+  
     this.isButtonDisable = true;
     this.assignmentService.peuplerBDavecForkJoin(this.nbData)
       .subscribe(() => {
         this.router.navigate(['/home']);
-        this.toastr.success(this.nbData + ' devoirs ont été ajoutés ! ', 'Succès');
+        this.toastr.success(this.nbData + ' devoirs ont été ajoutés ! ', 'Succès', {
+          positionClass: 'toast-bottom-right'
+        });
    
       }, error => {
-        this.toastr.error('Une erreur est survenue lors de l\'ajout des devoirs.', 'Erreur');
+        this.toastr.error('Une erreur est survenue lors de l\'ajout des devoirs.', 'Erreur', {
+          positionClass: 'toast-bottom-right'
+        });
         this.isButtonDisable = false; 
       });
   }

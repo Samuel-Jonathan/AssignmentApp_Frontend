@@ -69,42 +69,42 @@ export class AddAssignmentComponent implements OnInit {
   onSubmit() {
     if (!this.nomDevoir || this.dateRendu || this.selectedStudentId || this.selectedSubjectId
       || this.notes) {
-      this.toastr.error("Tous les champs sont obligatoires sauf le champ pour le commentaire !", '', {
+      this.toastr.error("Tous les champs sont obligatoires sauf le champ pour le commentaire !", 'Erreur', {
         positionClass: 'toast-bottom-right'
       });
       return;
     }
 
     if (!this.nomDevoir) {
-      this.toastr.error("Le devoir doit avoir un nom !", '', {
+      this.toastr.error("Le devoir doit avoir un nom !", 'Erreur', {
         positionClass: 'toast-bottom-right'
       });
       return;
     }
 
     if (!this.dateRendu) {
-      this.toastr.error("Le devoir doit avoir une date de rendu !", '', {
+      this.toastr.error("Le devoir doit avoir une date de rendu !", 'Erreur', {
         positionClass: 'toast-bottom-right'
       });
       return;
     }
 
     if (!this.selectedStudentId) {
-      this.toastr.error("Le devoir doit avoir un étudiant  !", '', {
+      this.toastr.error("Le devoir doit avoir un étudiant  !", 'Erreur', {
         positionClass: 'toast-bottom-right'
       });
       return;
     }
 
     if (!this.selectedSubjectId) {
-      this.toastr.error("Le devoir doit avoir une matière !", '', {
+      this.toastr.error("Le devoir doit avoir une matière !", 'Erreur', {
         positionClass: 'toast-bottom-right'
       });
       return;
     }
 
     if (!this.notes) {
-      this.toastr.error("Le devoir doit avoir une note !", '', {
+      this.toastr.error("Le devoir doit avoir une note !", 'Erreur', {
         positionClass: 'toast-bottom-right'
       });
       return;

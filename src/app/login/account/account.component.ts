@@ -25,21 +25,21 @@ export class AccountComponent {
 
   register() {
     if (!this.username || !this.password || !this.confirmPassword || !this.role) {
-      this.toastr.error("Tous les champs sont obligatoires.", '', {
+      this.toastr.error("Tous les champs sont obligatoires.", 'Erreur', {
         positionClass: 'toast-bottom-right' 
       });
       return;
     }
 
     if (this.password !== this.confirmPassword) {
-      this.toastr.error("Le mot de passe ne correspond pas.", '', {
+      this.toastr.error("Le mot de passe ne correspond pas.", 'Erreur', {
         positionClass: 'toast-bottom-right' 
       });
       return;
     }
 
     if (this.password.length < 8) {
-      this.toastr.error("Le mot de passe doit posséder au moins 8 caractères.", '', {
+      this.toastr.error("Le mot de passe doit posséder au moins 8 caractères.", 'Erreur', {
         positionClass: 'toast-bottom-right' 
       });
       return;
@@ -48,7 +48,7 @@ export class AccountComponent {
     this.authService.getUser(this.username).subscribe(
       (user) => {
         if (user) {
-          this.toastr.error("Un compte avec ce nom d'utilisateur existe déjà.", '', {
+          this.toastr.error("Un compte avec ce nom d'utilisateur existe déjà.", 'Erreur', {
             positionClass: 'toast-bottom-right' 
           });
         } else {
@@ -71,11 +71,11 @@ export class AccountComponent {
     this.authService.register(this.username, this.password, this.role)
       .subscribe(
         (response) => {
-          this.toastr.success(this.username + " créé avec succès.");
+          this.toastr.success(this.username + " créé avec succès.", 'Succès');
         },
         (error) => {
           if (error.status === 201) {
-            this.toastr.success(this.username + " créé avec succès.");
+            this.toastr.success(this.username + " créé avec succès.", 'Succès');
           } else {
             console.error("Erreur lors de la création de l'utilisateur :", error);
           }
