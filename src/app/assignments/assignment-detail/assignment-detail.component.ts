@@ -73,6 +73,12 @@ export class AssignmentDetailComponent implements OnInit {
   }
 
   onClickEdit() {
+    if (this.authService.isAuthenticated()) {
+      this.toastr.error("Vous devez être authentifié !", 'Erreur', {
+        positionClass: 'toast-bottom-right'
+      });
+      return;
+    }
     if (this.assignementTransmis) {
       this.router.navigate(["/assignment", this.assignementTransmis.id, 'edit'],
         { queryParams: { nom: this.assignementTransmis.nom }, fragment: 'edition' });
