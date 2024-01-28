@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthService } from './shared/auth.service';
 import { AssignmentsService } from './shared/assignments.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-root',
@@ -12,7 +13,8 @@ export class AppComponent {
   isButtonDisable = false;
 
   constructor(public authService: AuthService,
-    private assignmentService: AssignmentsService) { }
+    private assignmentService: AssignmentsService,
+    private toastr: ToastrService) { }
 
   logout() {
     this.authService.logout();
@@ -20,9 +22,8 @@ export class AppComponent {
 
   peuplerBD() {
     this.isButtonDisable = true;
-    this.assignmentService.peuplerBDavecForkJoin()
+    this.assignmentService.peuplerBDavecForkJoin(1000)
       .subscribe(() => {
-        console.log("LA BD A ETE PEUPLEE, TOUS LES ASSIGNMENTS AJOUTES");
         window.location.reload();
       })
   }
@@ -35,7 +36,7 @@ export class AppComponent {
     return !this.assignmentService.isLoading;
   }
 
-  getUsername(): string | null{
+  getUsername(): string | null {
     return sessionStorage.getItem("username");
   }
 }

@@ -74,10 +74,10 @@ export class AssignmentsService {
     return this.http.delete(deleteURI, this.getHttpOptions());
   }
   
-  peuplerBDavecForkJoin() {
+  peuplerBDavecForkJoin(nbData: number) {
     let appelsVersAddAssignments: Observable<any>[] = [];
-
-    bdInitialAssignments.forEach(a => {
+  
+    bdInitialAssignments.slice(0, nbData).forEach(a => {
       let nouvelAssignment = new Assignment();
       nouvelAssignment.nom = a.nom;
       nouvelAssignment.id = a.id;
@@ -87,9 +87,10 @@ export class AssignmentsService {
       nouvelAssignment.subjectId = a.subjectId;
       nouvelAssignment.note = a.note;
       nouvelAssignment.comment = a.comment;
-
-      appelsVersAddAssignments.push(this.addAllAssignments(nouvelAssignment))
+  
+      appelsVersAddAssignments.push(this.addAllAssignments(nouvelAssignment));
     });
+  
     return forkJoin(appelsVersAddAssignments);
   }
 

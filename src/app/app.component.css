@@ -1,6 +1,6 @@
 mat-toolbar {
-    display: block;
     background-color: #3B3B39;
+    display: block;
 }
 
 mat-icon {
@@ -11,13 +11,15 @@ mat-icon {
     flex: 1;
 }
 
+mat-sidenav {
+    background: rgb(243, 243, 241);
+}
+
+
 mat-sidenav-container {
     height: calc(205vh - 115vh);
 }
 
-mat-sidenav {
-    background: rgb(243, 243, 241);
-}
 
 .mat-toolbar-row button {
     transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
@@ -25,7 +27,7 @@ mat-sidenav {
 
 .mat-toolbar-row button:hover {
     background-color: #717171;
-    transform: scale(1.1); 
+    transform: scale(1.1);
 }
 
 .disabled-background {
@@ -58,3 +60,31 @@ mat-toolbar-row {
         text-shadow: 0 0 5px white;
     }
 }
+
+mat-icon.color {
+    color: #3B3B39;
+}
+.mat-nav-list a {
+  display: flex;
+  align-items: center;
+  text-decoration: none; 
+}
+
+mat-list-item {
+  cursor: pointer;
+  margin-top: 10px;
+  transition: all 0.3s;
+
+}
+
+mat-list-item:hover {
+    color: aliceblue;
+    transform: scale(1.1); 
+    background-color: #b8b8b8; 
+    size: 20px;
+  }
+
+.color {
+    margin-right: 8px;
+    vertical-align: middle; 
+  }

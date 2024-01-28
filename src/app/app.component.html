@@ -14,8 +14,8 @@
         <mat-icon>menu</mat-icon>
       </button>
       <button style="color:white" mat-button [disabled]="isButtonDisable" [class.disabled-background]="isButtonDisable"
-        (click)="peuplerBD()">Add Assignments in database
-        <mat-icon>autorenew</mat-icon>
+        (click)="peuplerBD()">Ajoute 1000 devoirs
+        <mat-icon>backup</mat-icon>
       </button> 
         <div *ngIf="getUsername()" class="centered-text">
           <p>Bienvenue {{getUsername()}}</p>
@@ -26,12 +26,12 @@
           <mat-icon>home</mat-icon>
         </button>
       </a>
-      <a routerLink="/login" *ngIf="!authService.isAdmin()">
+      <a routerLink="/login" *ngIf="!authService.isAuthenticated()">
         <button style="color: white" mat-button> Connexion
           <mat-icon>account_circle</mat-icon>
         </button>
       </a>
-      <a routerLink="/home" *ngIf="authService.isAdmin()" (click)="logout()">
+      <a routerLink="/home" *ngIf="authService.isAuthenticated()" (click)="logout()">
         <button style="color:white" mat-button>Déconnexion
           <mat-icon>logout</mat-icon>
         </button>
@@ -42,11 +42,11 @@
   <mat-sidenav-container>
     <mat-sidenav [(opened)]="opened" mode="side">
       <mat-nav-list>
-        <a routerLink="/home"><mat-list-item>Liste des devoirs</mat-list-item></a>
-        <a routerLink="/add"><mat-list-item>Ajout d'un devoir</mat-list-item></a>
-        <mat-list-item>Modification d'un devoir</mat-list-item>
-        <mat-list-item>Suppression d'un devoir</mat-list-item>
-        <mat-list-item>Génération de données de test</mat-list-item>
+        <a routerLink="/home"><mat-list-item><mat-icon class="color">view_list</mat-icon>Liste des devoirs</mat-list-item></a>
+        <a routerLink="/add"><mat-list-item><mat-icon class="color">add_circle</mat-icon>Ajout d'un devoir</mat-list-item></a>
+        <mat-list-item><mat-icon class="color">edit</mat-icon>Modification d'un devoir</mat-list-item>
+        <mat-list-item><mat-icon class="color">delete_forever</mat-icon>Suppression d'un devoir</mat-list-item>
+        <a routerLink="/generate"><mat-list-item><mat-icon class="color">sync</mat-icon>Génération de données de test</mat-list-item></a>
       </mat-nav-list>
     </mat-sidenav>
     <router-outlet></router-outlet>

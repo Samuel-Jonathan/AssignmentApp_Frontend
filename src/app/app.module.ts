@@ -38,8 +38,9 @@ import { AccountComponent } from './login/account/account.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 import { CommonModule } from '@angular/common';
-import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { MatDialogModule } from '@angular/material/dialog';
 import { ConfirmationDialogComponent } from './assignments/assignment-detail/confirmation-dialog/confirmation-dialog.component';
+import { DataComponent } from './data/data.component';
 
 
 const routes: Routes = [
@@ -49,7 +50,8 @@ const routes: Routes = [
   { path: 'assignment/:id', component: AssignmentDetailComponent },
   { path: 'assignment/:id/edit', component: EditAssignmentComponent, canActivate: [authGuard] },
   { path: 'login', component: LoginComponent },
-  { path: 'account', component: AccountComponent }
+  { path: 'account', component: AccountComponent },
+  { path: 'generate', component: DataComponent }
 ];
 
 export function jwtOptionsFactory(jwtHelperService: JwtHelperService) {
@@ -67,7 +69,7 @@ export function jwtOptionsFactory(jwtHelperService: JwtHelperService) {
     AssignmentsComponent,
     RenduDirective,
     NonRenduDirective, AssignmentDetailComponent, AddAssignmentComponent,
-    EditAssignmentComponent, LoginComponent, AccountComponent, ConfirmationDialogComponent
+    EditAssignmentComponent, LoginComponent, AccountComponent, ConfirmationDialogComponent, DataComponent
   ],
   imports: [
     JwtModule.forRoot({

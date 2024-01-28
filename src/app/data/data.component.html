@@ -1,0 +1,15 @@
+<body>
+    <div class="container">
+        <form (ngSubmit)="onGenerate()">
+            <div>
+                <h1>Génération de données de test</h1>
+            </div>
+
+            <input type="number" id="nbData" name="nbData" [(ngModel)]="nbData" min="0">
+            <br>
+            <div>
+                <button *ngIf="!isButtonDisable" type="submit">Ajouter les devoirs</button>
+            </div>
+        </form>
+    </div>
+</body>
